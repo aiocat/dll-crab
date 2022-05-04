@@ -1,21 +1,17 @@
 // Copyright (c) 2022 aiocat
-// 
+//
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-use std::fs::{
-    read,
-    write,
-    create_dir
-};
-use std::path::PathBuf;
 use rand::{distributions::Alphanumeric, Rng};
+use std::fs::{create_dir, read, write};
+use std::path::PathBuf;
 
 // Read DLL data and write it to new random-named file
 pub fn spoof_dll(path: String) -> String {
     let new_name = format!("{}.dll", random_name(10));
     let data = read(&path).unwrap();
-    
+
     let mut new_path = PathBuf::from(&path);
     new_path.pop();
     new_path.push(".dcspf");
