@@ -25,7 +25,7 @@ Rusty DLL Injector with GUI
 
 ## Why?
 
-Because I can't find a GUI DLL Injector that written in Rust. and I decided to made an one.
+Because I can't find a GUI DLL Injector that written in Rust. And i wrote it myself!
 
 ## Methods
 
