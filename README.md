@@ -38,6 +38,15 @@ Because I can't find a GUI DLL Injector that written in Rust. and I decided to m
 
 You can download latest release from [here](https://github.com/aiocat/dll-crab/releases/latest).
 
+## DCB (DLL Crab Builder)
+
+`dcb.bat` is a batch script for building dll crab. If you have Rust, you can use this script to build dll-crab automatically for both `gnu` and `msvc` toolchains.
+
+- `.\dcb.bat`: Default building
+- `.\dcb.bat clean`: Only ZIP files _(used in github releases)_
+
+And check `.\build` folder after script is finished.
+
 ## Technologies
 
 - Rust for Everything

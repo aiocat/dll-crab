@@ -7,7 +7,7 @@ use crate::injector;
 use crate::msgbox;
 use crate::spoof;
 
-use eframe::{egui, egui::containers::ScrollArea, epaint};
+use eframe::{egui, egui::containers::ScrollArea, epaint, IconData};
 use rfd::FileDialog;
 use std::collections::HashMap;
 use std::ffi::OsStr;
@@ -42,8 +42,6 @@ pub struct DLLCrabWindow {
     selected_gui: SelectGui,
 }
 
-const ICON: &[u8] = include_bytes!("..\\assets\\dll-crab.png");
-
 // this function runs a new egui instance
 pub fn draw_window() {
     // window options
@@ -51,11 +49,7 @@ pub fn draw_window() {
         resizable: true,
         initial_window_size: Some(egui::Vec2 { x: 300.0, y: 300.0 }),
         min_window_size: Some(egui::Vec2 { x: 300.0, y: 300.0 }),
-        icon_data: Some(eframe::IconData {
-            rgba: ICON.to_vec(),
-            width: 256,
-            height: 256,
-        }),
+        icon_data: load_icon(".\\dll-crab.ico"),
         ..Default::default()
     };
 
@@ -167,7 +161,7 @@ impl eframe::App for DLLCrabWindow {
         egui::TopBottomPanel::bottom("bottom")
             .frame(main_frame)
             .show(ctx, |ui: &mut egui::Ui| {
-                ui.small("v1.3.1");
+                ui.small("v1.3.2");
                 egui::menu::bar(ui, |ui: &mut egui::Ui| {
                     ui.hyperlink_to("Source Code", "https://github.com/aiocat/dll-crab");
                     ui.hyperlink_to(
@@ -344,4 +338,21 @@ impl DLLCrabWindow {
                 }
             });
     }
+}
+
+fn load_icon(path: &str) -> Option<IconData> {
+    let (icon_rgba, icon_width, icon_height) = {
+        let image = image::open(path)
+            .expect("Failed to open icon path")
+            .into_rgba8();
+        let (width, height) = image.dimensions();
+        let rgba = image.into_raw();
+        (rgba, width, height)
+    };
+
+    Some(IconData {
+        rgba: icon_rgba,
+        width: icon_width,
+        height: icon_height,
+    })
 }
