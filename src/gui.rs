@@ -14,6 +14,8 @@ use std::ffi::OsStr;
 use std::path::Path;
 use sysinfo::{PidExt, ProcessExt, System, SystemExt};
 
+const ICON: &[u8] = include_bytes!("..\\assets\\dll-crab.ico");
+
 #[derive(Debug, std::cmp::PartialEq)]
 enum InjectionMethods {
     CreateRemoteThread,
@@ -49,7 +51,7 @@ pub fn draw_window() {
         resizable: true,
         initial_window_size: Some(egui::Vec2 { x: 300.0, y: 300.0 }),
         min_window_size: Some(egui::Vec2 { x: 300.0, y: 300.0 }),
-        icon_data: load_icon(".\\dll-crab.ico"),
+        icon_data: load_icon(),
         ..Default::default()
     };
 
@@ -340,9 +342,9 @@ impl DLLCrabWindow {
     }
 }
 
-fn load_icon(path: &str) -> Option<IconData> {
+fn load_icon() -> Option<IconData> {
     let (icon_rgba, icon_width, icon_height) = {
-        let image = image::open(path)
+        let image = image::load_from_memory(ICON)
             .expect("Failed to open icon path")
             .into_rgba8();
         let (width, height) = image.dimensions();

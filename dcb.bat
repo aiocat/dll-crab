@@ -18,6 +18,8 @@ if exist .\build (
 
 : compile for both gnu and msvc
 for %%t in (gnu msvc) do (
+    cls
+    
     : set override and compile
     rustup override set stable-x86_64-pc-windows-%%t
     cargo build --release
