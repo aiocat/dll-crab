@@ -19,7 +19,7 @@ if exist .\build (
 : compile for both gnu and msvc
 for %%t in (gnu msvc) do (
     cls
-    
+
     : set override and compile
     rustup override set stable-x86_64-pc-windows-%%t
     cargo build --release
@@ -30,8 +30,7 @@ for %%t in (gnu msvc) do (
     : move file to folder
     move .\target\release\dll-crab.exe .\build\dll-crab-%%t\dll-crab.exe
 
-    : copy crab icon, license and readme file
-    echo f | xcopy /f /y .\assets\dll-crab.ico .\build\dll-crab-%%t\dll-crab.ico
+    : copy license and readme file
     echo f | xcopy /f /y .\README.md .\build\dll-crab-%%t\README.md
     echo f | xcopy /f /y .\LICENSE .\build\dll-crab-%%t\LICENSE
 
