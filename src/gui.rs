@@ -163,7 +163,7 @@ impl eframe::App for DLLCrabWindow {
         egui::TopBottomPanel::bottom("bottom")
             .frame(main_frame)
             .show(ctx, |ui: &mut egui::Ui| {
-                ui.small("v1.3.2");
+                ui.small("v1.3.3");
                 egui::menu::bar(ui, |ui: &mut egui::Ui| {
                     ui.hyperlink_to("Source Code", "https://github.com/aiocat/dll-crab");
                     ui.hyperlink_to(
