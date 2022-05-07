@@ -18,8 +18,11 @@ Rusty DLL Injector with GUI
 
 ## Screenshot
 
-![Screenshot 1](./assets/screenshot_1.png)
-![Screenshot 2](./assets/screenshot_2.png)
+![Screenshot 1](./assets/ss_1.png)
+![Screenshot 2](./assets/ss_2.png)
+
+![Screenshot 3](./assets/ss_3.png)
+![Screenshot 4](./assets/ss_4.png)
 
 </div>
 
